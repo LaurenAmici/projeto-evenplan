@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!-- Alunas: Giulia Lain, Isabelle de Oliveira e Lauren Amici -->
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EvenPlan – Eventos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+    <link th:href="@{/css/eventos.css}" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <a th:href="@{/}" class="logo">EvenPlan</a>
+    <span class="nav-credit">Desenvolvido por Giulia, Isabelle e Lauren</span>
+</nav>
+
+<!-- LAYOUT -->
+<div class="page-wrapper">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <a th:href="@{/eventos/novo}" class="btn-novo-evento">Crie um novo evento</a>
+
+        <div class="sidebar-categorias">
+            <h3>
+                Categorias
+                <a th:href="@{/categorias}" class="icone-editar" title="Gerenciar categorias">✏️</a>
+            </h3>
+            <ul class="lista-categorias">
+                <li th:each="cat : ${categorias}">
+                    <a th:href="@{/eventos(categoriaId=${cat.id})}" th:text="${cat.nome}">Categoria</a>
+                </li>
+            </ul>
+        </div>
+
+        <a th:href="@{/categorias/nova}" class="btn-nova-categoria">
+            <span class="plus">＋</span> Crie uma nova categoria
+        </a>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-content">
+        <div class="main-header">
+            <h1>Eventos</h1>
+            <form th:action="@{/eventos}" method="get" class="busca-wrapper">
+                <span class="icone-busca">🔍</span>
+                <input type="text" name="busca" class="input-busca"
+                       placeholder="Busque um evento"
+                       th:value="${busca}">
+            </form>
+            <a th:if="${categoriaAtiva != null}"
+               th:href="@{/eventos}"
+               class="btn-filtro-categoria"
+               title="Remover filtro">
+                Categoria: <span th:text="${categoriaAtiva.nome}"></span> ✕
+            </a>
+        </div>
+
+        <!-- GRID DE EVENTOS -->
+        <div class="grid-eventos">
+            <a th:each="evento : ${eventos}"
+               th:href="@{/eventos/{id}(id=${evento.id})}"
+               class="card-evento">
+                <span class="tag-categoria" th:text="${evento.categoria.nome}">Categoria</span>
+                <h3 th:text="${evento.nome}">Evento</h3>
+                <p th:text="${evento.descricao}">Descrição</p>
+                <span class="data-evento"
+                      th:text="|Dia ${#temporals.format(evento.data, 'dd/MM/yyyy')} às ${#temporals.format(evento.data, 'HH')}h${#temporals.format(evento.data, 'mm') != '00' ? #temporals.format(evento.data, 'mm') : ''}|">
+                    Data
+                </span>
+            </a>
+        </div>
+
+        <p th:if="${#lists.isEmpty(eventos)}" style="color:#999; margin-top:2rem;">
+            Nenhum evento encontrado.
+        </p>
+    </main>
+</div>
+
+</body>
+</html>

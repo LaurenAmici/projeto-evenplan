@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- Alunas: Giulia Lain, Isabelle de Oliveira e Lauren Amici -->
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EvenPlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+    <link th:href="@{/css/home.css}" rel="stylesheet">
+</head>
+<body>
+
+<nav>
+    <a th:href="@{/}" class="logo">EvenPlan</a>
+    <span class="nav-credit">Desenvolvido por Giulia, Isabelle e Lauren</span>
+</nav>
+
+<div class="hero-wrapper">
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Event Planner</h1>
+            <p>Organize seus eventos sem dor de cabeça e curta cada momento. Cadastre, categorize e gerencie tudo em um só lugar.</p>
+            <a th:href="@{/eventos}" class="btn-comecar">Comece agora mesmo!</a>
+        </div>
+        <img th:src="@{/images/evenplan_home.png}" alt="Pessoas comemorando em um evento" class="hero-image"/>
+    </section>
+</div>
+
+</body>
+</html>

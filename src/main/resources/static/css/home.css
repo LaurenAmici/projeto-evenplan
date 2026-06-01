@@ -1,0 +1,169 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --rosa-fundo: #f9f5f0;
+    --rosa-escuro: #d9a2a3;
+    --rosa-claro: #efd8d6;
+    --text-dark: #1a1a1a;
+    --text-muted: #353535;
+    --btn-border: #d9a2a3;
+    --verde-claro: #c2c6b9;
+    --branco: #ffffff;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--branco);
+    color: var(--text-dark);
+    min-height: 100vh;
+}
+
+/* ── NAVBAR ── */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    background-color: var(--branco);
+}
+
+nav .logo {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    text-decoration: none;
+}
+
+nav .nav-link {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--rosa-escuro);
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+nav .nav-link:hover {
+    opacity: 0.75;
+}
+
+nav .nav-credit {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    opacity: 0.75;
+}
+
+/* ── HERO WRAPPER ── */
+.hero-wrapper {
+    padding: 1rem 3rem 3rem 3rem;
+}
+
+/* ── HERO CARD ── */
+.hero {
+    display: flex;
+    align-items: center;
+    padding: 3rem 3rem 0 3rem;
+    min-height: 480px;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--rosa-claro);
+    border-radius: 20px;
+}
+
+.hero-content {
+    max-width: 380px;
+    z-index: 2;
+    animation: fadeInUp 0.7s ease both;
+}
+
+.hero-content h1 {
+    font-family: 'Shrikhand', cursive;
+    font-size: 4.2rem;
+    line-height: 1.05;
+    color: var(--text-dark);
+    margin-bottom: 1.2rem;
+    letter-spacing: -0.5px;
+}
+
+.hero-content p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-bottom: 2rem;
+    max-width: 280px;
+}
+
+.btn-comecar {
+    display: inline-block;
+    padding: 0.65rem 1.6rem;
+    border: 1.5px solid var(--btn-border);
+    border-radius: 6px;
+    background: #f9f5f0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.88rem;
+    color: var(--text-dark);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.btn-comecar:hover {
+    background: var(--rosa-escuro);
+    color: var(--branco);
+    border-color: var(--rosa-escuro);
+}
+
+/* ── IMAGEM HERO ── */
+.hero-image {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 95%;
+    max-width: 62%;
+    object-fit: contain;
+    object-position: bottom right;
+    animation: fadeIn 0.9s ease both;
+}
+
+/* ── ANIMAÇÕES ── */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* ── RESPONSIVO ── */
+@media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+
+    .hero-wrapper { padding: 1rem 1.5rem 2rem; }
+
+    .hero {
+        flex-direction: column;
+        padding: 2rem 1.5rem 0;
+        align-items: flex-start;
+        min-height: auto;
+        border-radius: 14px;
+    }
+
+    .hero-content h1 { font-size: 3rem; }
+    .hero-content p  { max-width: 100%; }
+
+    .hero-image {
+        position: relative;
+        height: auto;
+        max-width: 100%;
+        margin-top: 2rem;
+    }
+}

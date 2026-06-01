@@ -1,5 +1,11 @@
 package com.evenplan.projeto_evenplan;
 
+/* Alunas:
+- Giulia Lain Sansanoski Rodrigues
+- Isabelle de Oliveira Jorge Fonseca
+- Lauren Amici Garcia */
+
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

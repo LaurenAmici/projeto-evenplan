@@ -1,0 +1,680 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --rosa-fundo: #f9f5f0;
+    --rosa-escuro: #d9a2a3;
+    --rosa-tag: #efd8d6;
+    --text-dark: #1a1a1a;
+    --text-muted: #353535;
+    --text-rosa: #d9a2a3;
+    --branco: #ffffff;
+    --cinza-claro: #c2c6b9;
+    --sombra: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--branco);
+    color: var(--text-dark);
+    min-height: 100vh;
+}
+
+/* ── NAVBAR ── */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2.5rem;
+    background-color: var(--rosa-escuro);
+}
+
+nav .logo {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--branco);
+    text-decoration: none;
+}
+
+nav .nav-credit {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 0.88rem;
+    color: var(--branco);
+    opacity: 0.9;
+}
+
+/* ── LAYOUT PRINCIPAL ── */
+.page-wrapper {
+    display: flex;
+    min-height: calc(100vh - 60px);
+}
+
+/* ── SIDEBAR ── */
+.sidebar {
+    width: 280px;
+    min-width: 280px;
+    padding: 2rem 1.5rem;
+    border-right: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.btn-novo-evento {
+    display: block;
+    width: 100%;
+    padding: 0.85rem 1rem;
+    background-color: var(--cinza-claro);
+    color: var(--text-dark);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.2s;
+}
+
+.btn-novo-evento:hover {
+    background-color: #b0b4a8;
+}
+
+.sidebar-categorias h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--text-dark);
+}
+
+.sidebar-categorias h3 .icone-editar {
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.sidebar-categorias h3 .icone-editar:hover {
+    opacity: 1;
+}
+
+.lista-categorias {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.lista-categorias li a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    transition: color 0.2s;
+}
+
+.lista-categorias li a:hover {
+    color: var(--rosa-escuro);
+}
+
+.btn-nova-categoria {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background-color: var(--rosa-fundo);
+    border: none;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.2s;
+}
+
+.btn-nova-categoria:hover {
+    background-color: var(--rosa-tag);
+}
+
+.btn-nova-categoria .plus {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--text-muted);
+}
+
+/* ── CONTEÚDO PRINCIPAL ── */
+.main-content {
+    flex: 1;
+    padding: 2rem 2.5rem;
+}
+
+.main-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.main-header h1 {
+    font-family: 'Shrikhand', cursive;
+    font-size: 3rem;
+    color: var(--text-dark);
+    min-width: 180px;
+}
+
+.busca-wrapper {
+    flex: 1;
+    position: relative;
+    min-width: 200px;
+}
+
+.busca-wrapper .icone-busca {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+.input-busca {
+    width: 100%;
+    padding: 0.7rem 1rem 0.7rem 2.8rem;
+    border: 1.5px solid #ddd;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    background: var(--branco);
+    color: var(--text-dark);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input-busca:focus {
+    border-color: var(--rosa-escuro);
+}
+
+.btn-filtro-categoria {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.2rem;
+    background-color: var(--text-dark);
+    color: var(--branco);
+    border: none;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.88rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s;
+    text-decoration: none;
+}
+
+.btn-filtro-categoria:hover {
+    background-color: #5a3a30;
+}
+
+/* ── GRID DE CARDS ── */
+.grid-eventos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+}
+
+.card-evento {
+    background: var(--rosa-fundo);
+    border: 1.5px solid #eee;
+    border-radius: 14px;
+    padding: 1.2rem;
+    cursor: pointer;
+    transition: box-shadow 0.2s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.card-evento:hover {
+    box-shadow: var(--sombra);
+    transform: translateY(-2px);
+}
+
+.tag-categoria {
+    display: inline-block;
+    background-color: var(--rosa-tag);
+    color: var(--text-dark);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.3rem 0.9rem;
+    border-radius: 50px;
+    width: fit-content;
+}
+
+.card-evento h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-top: 0.3rem;
+}
+
+.card-evento p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-evento .data-evento {
+    font-size: 0.82rem;
+    color: var(--rosa-escuro);
+    margin-top: auto;
+    padding-top: 0.8rem;
+}
+
+/* ── OVERLAY ── */
+/* REMOVED MODAL STYLES */
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-overlay.ativo {
+    display: flex;
+}
+
+/* ── MODAL BASE ── */
+.modal {
+    background: var(--rosa-fundo);
+    border-radius: 18px;
+    padding: 2.5rem 2rem;
+    width: 100%;
+    max-width: 640px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: modalEntrar 0.25s ease;
+}
+
+@keyframes modalEntrar {
+    from { opacity: 0; transform: scale(0.95); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+.modal h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+}
+
+.btn-fechar-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1.2rem;
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: var(--text-muted);
+    line-height: 1;
+}
+
+.btn-fechar-modal:hover {
+    color: var(--text-dark);
+}
+
+/* ── CAMPOS DO MODAL ── */
+.campo-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    display: block;
+    color: var(--text-dark);
+}
+
+.campo-input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background-color: var(--rosa-tag);
+    border: none;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    outline: none;
+    margin-bottom: 1rem;
+}
+
+.campo-input::placeholder {
+    color: rgba(66, 43, 35, 0.5);
+}
+
+.campo-local-wrapper {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.campo-local-wrapper input {
+    width: 100%;
+    padding: 0.8rem 3rem 0.8rem 1rem;
+    background-color: var(--rosa-tag);
+    border: none;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    outline: none;
+}
+
+.campo-local-wrapper input::placeholder {
+    color: rgba(66, 43, 35, 0.5);
+}
+
+.campo-local-wrapper .icone-local {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-dark);
+    font-size: 1rem;
+    pointer-events: none;
+}
+
+.campos-linha {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.campo-linha-item {
+    flex: 1;
+}
+
+.campo-linha-item label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    display: block;
+    color: var(--text-dark);
+}
+
+.campo-select {
+    width: 100%;
+    padding: 0.8rem 2.5rem 0.8rem 1rem;
+    background-color: var(--rosa-tag);
+    border: none;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+.campo-select option {
+    color: var(--text-dark);
+    background: var(--branco);
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper .icone-seta {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-dark);
+    pointer-events: none;
+    font-size: 1rem;
+}
+
+.campo-textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background-color: var(--rosa-tag);
+    border: none;
+    border-radius: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    outline: none;
+    resize: none;
+    height: 100px;
+    margin-bottom: 1.5rem;
+}
+
+.campo-textarea::placeholder {
+    color: rgba(66, 43, 35, 0.5);
+}
+
+/* ── BOTÕES DO MODAL ── */
+.btn-salvar {
+    display: block;
+    width: 100%;
+    padding: 0.9rem;
+    background-color: var(--text-dark);
+    color: var(--branco);
+    border: none;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-align: center;
+}
+
+.btn-salvar:hover {
+    background-color: #5a3a30;
+}
+
+.botoes-modal {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-editar {
+    flex: 1;
+    padding: 0.9rem;
+    background-color: var(--text-dark);
+    color: var(--branco);
+    border: none;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-editar:hover { background-color: #5a3a30; }
+
+.btn-excluir {
+    flex: 1;
+    padding: 0.9rem;
+    background-color: var(--text-dark);
+    color: var(--branco);
+    border: none;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-excluir:hover { background-color: #8b0000; }
+
+/* ── MODAL CATEGORIAS (grid com lápis) ── */
+.grid-categorias-modal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.btn-categoria-editar {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 1.4rem;
+    background-color: var(--rosa-tag);
+    color: var(--text-dark);
+    border: none;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-categoria-editar:hover {
+    background-color: var(--rosa-escuro);
+    color: var(--branco);
+}
+
+.icone-editar-btn {
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+.btn-lixeira {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-dark);
+    font-size: 1.2rem;
+    opacity: 0.7;
+    transition: opacity 0.2s, color 0.2s;
+    padding: 0;
+}
+
+.btn-lixeira:hover {
+    opacity: 1;
+    color: #8b0000;
+}
+
+/* ── DATA/HORA INPUT ── */
+input[type="date"],
+input[type="time"] {
+    color: var(--text-dark);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+/* ── CAMPO READONLY (detalhes do evento) ── */
+.campo-readonly {
+    cursor: default;
+    user-select: text;
+    min-height: 2.6rem;
+    display: flex;
+    align-items: center;
+}
+
+.campo-textarea.campo-readonly {
+    height: auto;
+    min-height: 80px;
+    align-items: flex-start;
+    padding-top: 0.8rem;
+    white-space: pre-wrap;
+}
+/* ── AJUSTES PARA NAVEGAÇÃO SEM MODAL ── */
+
+/* btn-novo-evento agora é um <a>, manter aparência de botão */
+a.btn-novo-evento {
+    display: block;
+    width: 100%;
+    padding: 0.85rem 1rem;
+    background-color: var(--cinza-claro);
+    color: var(--text-dark);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+a.btn-novo-evento:hover { background-color: #b0b4a8; }
+
+/* btn-nova-categoria agora é um <a> */
+a.btn-nova-categoria {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background-color: var(--rosa-fundo);
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    width: 100%;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+a.btn-nova-categoria:hover { background-color: var(--rosa-tag); }
+
+/* card-evento agora é um <a> */
+a.card-evento {
+    text-decoration: none;
+    color: inherit;
+    background: var(--rosa-fundo);
+    border: 1.5px solid #eee;
+    border-radius: 14px;
+    padding: 1.2rem;
+    cursor: pointer;
+    transition: box-shadow 0.2s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+a.card-evento:hover {
+    box-shadow: var(--sombra);
+    transform: translateY(-2px);
+}
+
+/* icone-editar (categorias) agora é um <a> */
+a.icone-editar {
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+    font-size: 1rem;
+    color: var(--text-dark);
+    text-decoration: none;
+}
+
+a.icone-editar:hover { opacity: 1; }

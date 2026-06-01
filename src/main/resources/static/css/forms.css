@@ -1,0 +1,293 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --rosa-fundo: #f9f5f0;
+    --rosa-escuro: #d9a2a3;
+    --rosa-tag: #efd8d6;
+    --text-dark: #1a1a1a;
+    --text-muted: #353535;
+    --branco: #ffffff;
+    --cinza-claro: #c2c6b9;
+    --sombra: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--branco);
+    color: var(--text-dark);
+    min-height: 100vh;
+}
+
+/* ── NAVBAR ── */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2.5rem;
+    background-color: var(--rosa-escuro);
+}
+
+nav .logo {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--branco);
+    text-decoration: none;
+}
+
+nav .nav-credit {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 0.88rem;
+    color: var(--branco);
+    opacity: 0.9;
+}
+
+/* ── CONTAINER DO FORMULÁRIO ── */
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 3rem 1.5rem;
+    min-height: calc(100vh - 60px);
+}
+
+.form-card {
+    background: var(--rosa-fundo);
+    border-radius: 18px;
+    padding: 2.5rem 2rem;
+    width: 100%;
+    max-width: 640px;
+    box-shadow: var(--sombra);
+}
+
+.form-card h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+}
+
+/* ── CAMPOS ── */
+.campo-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    display: block;
+    color: var(--text-dark);
+}
+
+.campo-input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background-color: var(--rosa-tag);
+    border: none;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    outline: none;
+    margin-bottom: 1rem;
+}
+
+.campo-input::placeholder {
+    color: rgba(66, 43, 35, 0.5);
+}
+
+.campo-local-wrapper {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.campo-local-wrapper input {
+    width: 100%;
+    padding: 0.8rem 3rem 0.8rem 1rem;
+    background-color: var(--rosa-tag);
+    border: none;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    outline: none;
+}
+
+.campo-local-wrapper input::placeholder {
+    color: rgba(66, 43, 35, 0.5);
+}
+
+.campo-local-wrapper .icone-local {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    pointer-events: none;
+}
+
+.campos-linha {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.campo-linha-item {
+    flex: 1;
+}
+
+.campo-linha-item label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    display: block;
+    color: var(--text-dark);
+}
+
+.campo-select {
+    width: 100%;
+    padding: 0.8rem 2.5rem 0.8rem 1rem;
+    background-color: var(--rosa-tag);
+    border: none;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+.campo-select option {
+    color: var(--text-dark);
+    background: var(--branco);
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper .icone-seta {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-dark);
+    pointer-events: none;
+    font-size: 1rem;
+}
+
+.campo-textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background-color: var(--rosa-tag);
+    border: none;
+    border-radius: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    outline: none;
+    resize: none;
+    height: 100px;
+    margin-bottom: 1.5rem;
+}
+
+.campo-textarea::placeholder {
+    color: rgba(66, 43, 35, 0.5);
+}
+
+/* ── BOTÕES ── */
+.btn-salvar {
+    display: block;
+    width: 100%;
+    padding: 0.9rem;
+    background-color: var(--text-dark);
+    color: var(--branco);
+    border: none;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-salvar:hover {
+    background-color: #5a3a30;
+}
+
+.botoes-form {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-editar {
+    flex: 1;
+    padding: 0.9rem;
+    background-color: var(--text-dark);
+    color: var(--branco);
+    border: none;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-editar:hover { background-color: #5a3a30; }
+
+.btn-excluir {
+    flex: 1;
+    padding: 0.9rem;
+    background-color: #8b0000;
+    color: var(--branco);
+    border: none;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-excluir:hover { background-color: #6b0000; }
+
+.btn-cancelar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 2rem;
+    background-color: var(--cinza-claro);
+    color: var(--text-dark);
+    border: none;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-decoration: none;
+    flex: 1;
+    text-align: center;
+}
+
+.btn-cancelar:hover { background-color: #b0b4a8; }
+
+/* ── DATA/HORA ── */
+input[type="date"],
+input[type="time"] {
+    color: var(--text-dark);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.6;
+}

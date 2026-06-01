@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!-- Alunas: Giulia Lain, Isabelle de Oliveira e Lauren Amici -->
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EvenPlan – Categorias</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+    <link th:href="@{/css/forms.css}" rel="stylesheet">
+    <style>
+        .grid-categorias {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .btn-categoria-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.75rem 1.4rem;
+            background-color: #efd8d6;
+            color: #1a1a1a;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .btn-categoria-item:hover {
+            background-color: #d9a2a3;
+            color: #fff;
+        }
+        .page-title {
+            font-family: 'Shrikhand', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+        .form-wrapper { align-items: flex-start; padding-top: 2.5rem; }
+        .form-card { max-width: 700px; }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <a th:href="@{/}" class="logo">EvenPlan</a>
+    <span class="nav-credit">Desenvolvido por Giulia, Isabelle e Lauren</span>
+</nav>
+
+<div class="form-wrapper">
+    <div class="form-card">
+        <h1 class="page-title">Categorias</h1>
+
+        <div class="grid-categorias">
+            <a th:each="cat : ${categorias}"
+               th:href="@{/categorias/editar/{id}(id=${cat.id})}"
+               class="btn-categoria-item">
+                <span th:text="${cat.nome}">Categoria</span>
+                <span>✏️</span>
+            </a>
+            <p th:if="${#lists.isEmpty(categorias)}" style="color:#999;">
+                Nenhuma categoria cadastrada ainda.
+            </p>
+        </div>
+
+        <div class="botoes-form">
+            <a th:href="@{/categorias/nova}" class="btn-salvar">＋ Nova categoria</a>
+            <a th:href="@{/eventos}" class="btn-cancelar">Voltar aos eventos</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
