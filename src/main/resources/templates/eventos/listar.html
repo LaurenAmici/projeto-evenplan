@@ -10,16 +10,13 @@
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav>
     <a th:href="@{/}" class="logo">EvenPlan</a>
     <span class="nav-credit">Desenvolvido por Giulia, Isabelle e Lauren</span>
 </nav>
 
-<!-- LAYOUT -->
 <div class="page-wrapper">
 
-    <!-- SIDEBAR -->
     <aside class="sidebar">
         <a th:href="@{/eventos/novo}" class="btn-novo-evento">Crie um novo evento</a>
 
@@ -40,7 +37,6 @@
         </a>
     </aside>
 
-    <!-- CONTEÚDO PRINCIPAL -->
     <main class="main-content">
         <div class="main-header">
             <h1>Eventos</h1>
@@ -49,6 +45,10 @@
                 <input type="text" name="busca" class="input-busca"
                        placeholder="Busque um evento"
                        th:value="${busca}">
+                <a th:if="${busca != null and !#strings.isEmpty(busca)}"
+                   th:href="@{/eventos}"
+                   class="btn-limpar-busca"
+                   title="Limpar busca">✕</a>
             </form>
             <a th:if="${categoriaAtiva != null}"
                th:href="@{/eventos}"
@@ -58,7 +58,6 @@
             </a>
         </div>
 
-        <!-- GRID DE EVENTOS -->
         <div class="grid-eventos">
             <a th:each="evento : ${eventos}"
                th:href="@{/eventos/{id}(id=${evento.id})}"

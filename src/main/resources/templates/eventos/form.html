@@ -7,10 +7,25 @@
     <title th:text="${evento.id != null} ? 'EvenPlan – Editar Evento' : 'EvenPlan – Novo Evento'">EvenPlan</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
     <link th:href="@{/css/forms.css}" rel="stylesheet">
+    <style>
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 1.5rem;
+        }
+        .form-grid .col-full  { grid-column: 1 / -1; }
+        .form-grid .col-left  { grid-column: 1; }
+        .form-grid .col-right { grid-column: 2; }
+
+        .subcampos {
+            display: flex;
+            gap: 0.75rem;
+        }
+        .subcampos .campo-linha-item { flex: 1; }
+    </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav>
     <a th:href="@{/}" class="logo">EvenPlan</a>
     <span class="nav-credit">Desenvolvido por Giulia, Isabelle e Lauren</span>
@@ -21,43 +36,45 @@
         <h2 th:text="${evento.id != null} ? 'Editar Evento' : 'Cadastro de Evento'">Cadastro de Evento</h2>
 
         <form th:action="@{/eventos/salvar}" method="post">
-            <!-- ID oculto para edição -->
             <input type="hidden" name="id" th:if="${evento.id != null}" th:value="${evento.id}">
 
-            <label class="campo-label">Nome</label>
-            <input type="text" name="nome" class="campo-input"
-                   placeholder="Nome do evento"
-                   th:value="${evento.nome}"
-                   required>
+            <div class="form-grid">
 
-            <label class="campo-label">Local</label>
-            <div class="campo-local-wrapper">
-                <input type="text" name="local"
-                       placeholder="Endereço do evento"
-                       th:value="${evento.local}"
-                       required>
-                <span class="icone-local">📍</span>
-            </div>
+                <div class="col-left">
+                    <label class="campo-label">Nome</label>
+                    <input type="text" name="nome" class="campo-input"
+                           placeholder="Nome do evento"
+                           th:value="${evento.nome}" required>
 
-            <div class="campos-linha">
-                <div class="campo-linha-item">
-                    <label class="campo-label">Data</label>
-                    <input type="date" name="data" class="campo-input"
-                           th:value="${evento.data != null} ? ${#temporals.format(evento.data, 'yyyy-MM-dd')} : ''"
-                           required>
+                    <label class="campo-label">Local</label>
+                    <div class="campo-local-wrapper">
+                        <input type="text" name="local"
+                               placeholder="Endereço do evento"
+                               th:value="${evento.local}" required>
+                        <span class="icone-local">📍</span>
+                    </div>
                 </div>
-                <div class="campo-linha-item">
-                    <label class="campo-label">Hora</label>
-                    <input type="time" name="hora" class="campo-input"
-                           th:value="${evento.data != null} ? ${#temporals.format(evento.data, 'HH:mm')} : ''"
-                           required>
-                </div>
-                <div class="campo-linha-item">
+
+                <div class="col-right">
+                    <div class="subcampos">
+                        <div class="campo-linha-item">
+                            <label class="campo-label">Data</label>
+                            <input type="date" name="data" class="campo-input"
+                                   th:value="${evento.data != null} ? ${#temporals.format(evento.data, 'yyyy-MM-dd')} : ''"
+                                   required>
+                        </div>
+                        <div class="campo-linha-item">
+                            <label class="campo-label">Hora</label>
+                            <input type="time" name="hora" class="campo-input"
+                                   th:value="${evento.data != null} ? ${#temporals.format(evento.data, 'HH:mm')} : ''"
+                                   required>
+                        </div>
+                    </div>
+
                     <label class="campo-label">Categoria</label>
-                    <div class="select-wrapper">
+                    <div class="select-wrapper" style="margin-bottom:0.75rem;">
                         <select name="categoriaId" class="campo-select" required>
-                            <option value="" disabled
-                                    th:selected="${evento.categoria == null}">Selecione</option>
+                            <option value="" disabled th:selected="${evento.categoria == null}">Selecione</option>
                             <option th:each="cat : ${categorias}"
                                     th:value="${cat.id}"
                                     th:text="${cat.nome}"
@@ -67,25 +84,34 @@
                         <span class="icone-seta">▾</span>
                     </div>
                 </div>
-            </div>
 
-            <label class="campo-label">Descrição</label>
-            <textarea name="descricao" class="campo-textarea"
-                      placeholder="Descrição do evento"
-                      th:text="${evento.descricao}"></textarea>
+                <div class="col-full">
+                    <label class="campo-label">Descrição</label>
+                    <textarea name="descricao" class="campo-textarea"
+                              placeholder="Descrição do evento"
+                              th:text="${evento.descricao}"></textarea>
+                </div>
 
-            <div class="botoes-form" th:if="${evento.id != null}">
-                <button type="submit" class="btn-editar">Salvar alterações</button>
-                <form th:action="@{/eventos/excluir/{id}(id=${evento.id})}" method="post" style="flex:1;">
-                    <button type="submit" class="btn-excluir"
-                            onclick="return confirm('Excluir este evento?')">Excluir</button>
-                </form>
+                <div class="col-full acoes-form" th:if="${evento.id == null}">
+                    <div class="linha-botoes">
+                        <button type="submit" class="btn-salvar">Salvar</button>
+                        <a th:href="@{/eventos}" class="btn-cancelar">Cancelar</a>
+                    </div>
+                </div>
+
+                <div class="col-full acoes-form" th:if="${evento.id != null}">
+                    <div class="linha-botoes">
+                        <button type="submit" class="btn-editar">Salvar</button>
+                        <button type="submit"
+                                th:formaction="@{/eventos/excluir/{id}(id=${evento.id})}"
+                                class="btn-excluir"
+                                onclick="return confirm('Excluir este evento?')">Excluir</button>
+                        <a th:href="@{/eventos}" class="btn-cancelar">Cancelar</a>
+                    </div>
+                </div>
+
             </div>
-            <button th:if="${evento.id == null}" type="submit" class="btn-salvar">Salvar</button>
         </form>
-
-        <br>
-        <a th:href="@{/eventos}" class="btn-cancelar">Cancelar</a>
     </div>
 </div>
 

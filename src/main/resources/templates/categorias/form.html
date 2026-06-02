@@ -7,10 +7,12 @@
     <title th:text="${categoria.id != null} ? 'EvenPlan – Editar Categoria' : 'EvenPlan – Nova Categoria'">EvenPlan</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
     <link th:href="@{/css/forms.css}" rel="stylesheet">
+    <style>
+        .form-card { max-width: 520px; }
+    </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav>
     <a th:href="@{/}" class="logo">EvenPlan</a>
     <span class="nav-credit">Desenvolvido por Giulia, Isabelle e Lauren</span>
@@ -21,32 +23,36 @@
         <h2 th:text="${categoria.id != null} ? 'Editar Categoria' : 'Nova Categoria'">Nova Categoria</h2>
 
         <form th:action="@{/categorias/salvar}" method="post">
-            <!-- ID oculto para edição -->
             <input type="hidden" name="id" th:if="${categoria.id != null}" th:value="${categoria.id}">
 
             <label class="campo-label">Nome</label>
             <input type="text" name="nome" class="campo-input"
                    placeholder="Nome da categoria"
-                   th:value="${categoria.nome}"
-                   required>
+                   th:value="${categoria.nome}" required>
 
             <label class="campo-label">Descrição</label>
             <textarea name="descricao" class="campo-textarea"
                       placeholder="Descrição da categoria"
                       th:text="${categoria.descricao}"></textarea>
 
-            <div class="botoes-form" th:if="${categoria.id != null}">
-                <button type="submit" class="btn-editar">Salvar alterações</button>
-                <form th:action="@{/categorias/excluir/{id}(id=${categoria.id})}" method="post" style="flex:1;">
-                    <button type="submit" class="btn-excluir"
-                            onclick="return confirm('Excluir esta categoria? Os eventos associados perderão a categoria.')">Excluir</button>
-                </form>
+            <div class="acoes-form" th:if="${categoria.id == null}">
+                <div class="linha-botoes">
+                    <button type="submit" class="btn-salvar">Salvar</button>
+                    <a th:href="@{/categorias}" class="btn-cancelar">Cancelar</a>
+                </div>
             </div>
-            <button th:if="${categoria.id == null}" type="submit" class="btn-salvar">Salvar</button>
-        </form>
 
-        <br>
-        <a th:href="@{/categorias}" class="btn-cancelar">Cancelar</a>
+            <div class="acoes-form" th:if="${categoria.id != null}">
+                <div class="linha-botoes">
+                    <button type="submit" class="btn-editar">Salvar</button>
+                    <button type="submit"
+                            th:formaction="@{/categorias/excluir/{id}(id=${categoria.id})}"
+                            class="btn-excluir"
+                            onclick="return confirm('Excluir esta categoria?')">Excluir</button>
+                    <a th:href="@{/categorias}" class="btn-cancelar">Cancelar</a>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 

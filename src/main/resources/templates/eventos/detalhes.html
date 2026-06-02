@@ -8,36 +8,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
     <link th:href="@{/css/forms.css}" rel="stylesheet">
     <style>
-        .campo-readonly {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            background-color: #efd8d6;
-            border-radius: 50px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
-            color: #1a1a1a;
-            margin-bottom: 1rem;
-            min-height: 2.6rem;
-            display: flex;
-            align-items: center;
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 1.5rem;
         }
-        .textarea-readonly {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            background-color: #efd8d6;
-            border-radius: 14px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
-            color: #1a1a1a;
-            margin-bottom: 1.5rem;
-            min-height: 80px;
-            white-space: pre-wrap;
-        }
+        .form-grid .col-full  { grid-column: 1 / -1; }
+        .subcampos { display: flex; gap: 0.75rem; }
+        .subcampos .campo-linha-item { flex: 1; }
     </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav>
     <a th:href="@{/}" class="logo">EvenPlan</a>
     <span class="nav-credit">Desenvolvido por Giulia, Isabelle e Lauren</span>
@@ -47,38 +29,51 @@
     <div class="form-card">
         <h2 th:text="${evento.nome}">Evento</h2>
 
-        <label class="campo-label">Nome</label>
-        <div class="campo-readonly" th:text="${evento.nome}"></div>
+        <div class="form-grid">
 
-        <label class="campo-label">Local</label>
-        <div class="campo-local-wrapper">
-            <div class="campo-readonly" th:text="${evento.local}"></div>
-            <span class="icone-local">📍</span>
-        </div>
+            <div>
+                <label class="campo-label">Nome</label>
+                <div class="campo-readonly" th:text="${evento.nome}"></div>
 
-        <div class="campos-linha">
-            <div class="campo-linha-item">
-                <label class="campo-label">Data</label>
-                <div class="campo-readonly"
-                     th:text="${#temporals.format(evento.data, 'dd/MM/yyyy')}"></div>
+                <label class="campo-label">Local</label>
+                <div class="campo-local-wrapper">
+                    <div class="campo-readonly" th:text="${evento.local}"
+                         style="padding-right:2.5rem;"></div>
+                    <span class="icone-local">📍</span>
+                </div>
             </div>
-            <div class="campo-linha-item">
-                <label class="campo-label">Hora</label>
-                <div class="campo-readonly"
-                     th:text="${#temporals.format(evento.data, 'HH:mm')}"></div>
-            </div>
-            <div class="campo-linha-item">
+
+            <div>
+                <div class="subcampos">
+                    <div class="campo-linha-item">
+                        <label class="campo-label">Data</label>
+                        <div class="campo-readonly"
+                             th:text="${#temporals.format(evento.data, 'dd/MM/yyyy')}"></div>
+                    </div>
+                    <div class="campo-linha-item">
+                        <label class="campo-label">Hora</label>
+                        <div class="campo-readonly"
+                             th:text="${#temporals.format(evento.data, 'HH:mm')}"></div>
+                    </div>
+                </div>
+
                 <label class="campo-label">Categoria</label>
-                <div class="campo-readonly" th:text="${evento.categoria.nome}"></div>
+                <div class="campo-readonly" th:text="${evento.categoria.nome}"
+                     style="margin-bottom:0.75rem;"></div>
             </div>
-        </div>
 
-        <label class="campo-label">Descrição</label>
-        <div class="textarea-readonly" th:text="${evento.descricao}"></div>
+            <div class="col-full">
+                <label class="campo-label">Descrição</label>
+                <div class="textarea-readonly" th:text="${evento.descricao}"></div>
+            </div>
 
-        <div class="botoes-form">
-            <a th:href="@{/eventos/editar/{id}(id=${evento.id})}" class="btn-editar">Editar</a>
-            <a th:href="@{/eventos}" class="btn-cancelar">Voltar</a>
+            <div class="col-full acoes-form">
+                <div class="linha-botoes">
+                    <a th:href="@{/eventos/editar/{id}(id=${evento.id})}" class="btn-editar">Editar</a>
+                    <a th:href="@{/eventos}" class="btn-cancelar">Voltar</a>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

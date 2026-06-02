@@ -191,7 +191,7 @@ nav .nav-credit {
 
 .input-busca {
     width: 100%;
-    padding: 0.7rem 1rem 0.7rem 2.8rem;
+    padding: 0.7rem 2.5rem 0.7rem 2.8rem;
     border: 1.5px solid #ddd;
     border-radius: 50px;
     font-family: 'Poppins', sans-serif;
@@ -205,6 +205,21 @@ nav .nav-credit {
 .input-busca:focus {
     border-color: var(--rosa-escuro);
 }
+
+.btn-limpar-busca {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    text-decoration: none;
+    line-height: 1;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.btn-limpar-busca:hover { opacity: 1; }
 
 .btn-filtro-categoria {
     display: flex;
